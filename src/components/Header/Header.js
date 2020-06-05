@@ -46,7 +46,7 @@ function Header({
         <
         Link to = "/" >
         <
-        Title > Countries of the World < /Title> <
+        Title > Nations of the World < /Title> <
         /Link> <
         ThemeSwitcher lightTheme = {
             lightTheme
