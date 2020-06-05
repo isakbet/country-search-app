@@ -9,25 +9,20 @@ export default function CountryList({
     return (
         countries &&
         countries
-        .filter(country =>
-            country.name.toLowerCase().includes(countryQuery.toLowerCase())
-        )
-        .filter(country =>
-            country.region
-            .toLowerCase()
-            .includes(regionSelection.toLocaleLowerCase())
-        )
-        .map(country => ( <
-            CountryCard key = {
-                country.name
-            }
-            country = {
-                country
-            }
-            countryQuery = {
-                countryQuery
-            }
-            />
-        ))
+            .filter(country =>
+                country.name.toLowerCase().includes(countryQuery.toLowerCase())
+            )
+            .filter(country =>
+                country.region
+                    .toLowerCase()
+                    .includes(regionSelection.toLocaleLowerCase())
+            )
+            .map(country => (
+                <CountryCard
+                    key={country.name}
+                    country={country}
+                    countryQuery={countryQuery}
+                />
+            ))
     );
 }
