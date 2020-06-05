@@ -29,7 +29,7 @@ export default function SearchInput({
         StyledInput type = "search"
         id = "search"
         name = "search"
-        aria - label = "Search for a country"
+        aria label = "Search for a country"
         placeholder = "Search for a country..."
         onChange = {
             e => filterCountries(e.currentTarget.value)
