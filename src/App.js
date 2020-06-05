@@ -1,26 +1,81 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {
+    useState
+} from "react";
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch
+} from "react-router-dom";
+import {
+    ThemeProvider
+} from "styled-components";
+import {
+    DarkStyles,
+    LightStyles
+} from "./styles/Themes";
+import {
+    GlobalStyle
+} from "./styles/GlobalStyle";
+
+import Header from "./components/Header/Header";
+import CountriesHome from "./pages/CountriesHome/CountriesHome";
+import CountryDetail from "./pages/CountryDetail/CountryDetail";
+import {
+    NotFound
+} from "./pages/Error/Error";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [lightTheme, setTheme] = useState(true);
+
+    const toggleTheme = () => {
+        setTheme(!lightTheme);
+    };
+
+    return (<
+        Router >
+        <
+        ThemeProvider theme={
+                lightTheme ? LightStyles : DarkStyles
+            } >
+            <
+        React.Fragment >
+                <
+                    GlobalStyle />
+                <
+        div className="app__wrapper" >
+                    <
+                        Header toggleTheme={
+                            toggleTheme
+                        }
+                        lightTheme={
+                            lightTheme
+                        }
+                    /> <
+        main >
+                        <
+        Switch >
+                            <
+                                Route exact path="/"
+                                component={
+                                    CountriesHome
+                                }
+                            /> <
+                                Route path="/country/:country"
+                                component={
+                                    CountryDetail
+                                }
+                            /> <
+                                Route component={
+                                    NotFound
+                                }
+                            /> < /
+        Switch > <
+        /main> < /
+        div > <
+        /React.Fragment> < /
+        ThemeProvider > <
+        /Router>
+    );
 }
 
 export default App;
